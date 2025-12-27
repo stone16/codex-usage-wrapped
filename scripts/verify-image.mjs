@@ -72,10 +72,15 @@ async function main() {
   const port = server.address().port;
   const baseUrl = `http://127.0.0.1:${port}`;
 
+  // Use htmlViewport for comparison (larger viewport to avoid responsive breakpoints)
+  const viewportWidth = layout.htmlViewport?.width || 1200;
+  const viewportHeight = layout.htmlViewport?.height || 968;
+  const scale = layout.scale || 2;
+
   const browser = await chromium.launch();
   const page = await browser.newPage({
-    viewport: { width: layout.canvas.width, height: layout.canvas.height },
-    deviceScaleFactor: 1,
+    viewport: { width: viewportWidth, height: viewportHeight },
+    deviceScaleFactor: scale, // Match Satori's scale for comparison
   });
 
   await page.goto(baseUrl, { waitUntil: "networkidle" });
@@ -96,10 +101,11 @@ async function main() {
     content: "* { animation: none !important; transition: none !important; } [data-reveal] { opacity: 1 !important; transform: none !important; }" 
   });
 
+  // Screenshot just the .wrap element (card only)
+  const wrapElement = await page.$(".wrap");
   const htmlPathOut = path.join(outputDir, "wrapped-html.png");
-  await page.screenshot({
+  await wrapElement.screenshot({
     path: htmlPathOut,
-    clip: { x: 0, y: 0, width: layout.canvas.width, height: layout.canvas.height },
   });
 
   await browser.close();

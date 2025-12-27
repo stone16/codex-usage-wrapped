@@ -789,24 +789,34 @@ export function buildWrappedTemplate(data) {
     ),
   ], { padding: 12 });
 
-  // Footer
+  // Footer with bottom padding
   const footer = h(
     "div",
-    { style: { textAlign: "center", fontSize: 9, color: colors.text.faint, marginTop: 2 } },
+    { 
+      style: { 
+        textAlign: "center", 
+        fontSize: 9, 
+        color: colors.text.faint, 
+        marginTop: 2,
+        paddingBottom: layout.padding.bottom,
+      } 
+    },
     "@stometaverse"
   );
 
-  // Card content
-  const cardContent = h(
+  // Card-only output (no outer canvas wrapper)
+  return h(
     "div",
     {
       style: {
-        width: layout.card.width,
-        height: layout.card.height,
+        width: layout.canvas.width,
+        height: layout.canvas.height,
         display: "flex",
         flexDirection: "column",
         gap: 10,
-        padding: layout.padding.horizontal,
+        paddingLeft: layout.padding.horizontal,
+        paddingRight: layout.padding.horizontal,
+        paddingTop: layout.padding.top,
         fontFamily: typography.fontFamily,
         color: colors.text.primary,
         backgroundImage:
@@ -815,7 +825,6 @@ export function buildWrappedTemplate(data) {
           `radial-gradient(circle at 70% 85%, rgba(229, 139, 122, 0.2), transparent 60%), ` +
           `linear-gradient(160deg, ${colors.background}, ${colors.backgroundAlt})`,
         borderRadius: layout.radius.card,
-        boxShadow: `${layout.cardShadow}, 0 0 0 1px rgba(255, 255, 255, 0.5)`,
       },
     },
     header,
@@ -830,30 +839,5 @@ export function buildWrappedTemplate(data) {
     ),
     totalsPanel,
     footer
-  );
-
-  // Outer canvas with background - centered card like HTML version
-  return h(
-    "div",
-    {
-      style: {
-        width: layout.canvas.width,
-        height: layout.canvas.height,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        paddingTop: 24,
-        paddingBottom: 24,
-        paddingLeft: 24,
-        paddingRight: 24,
-        fontFamily: typography.fontFamily,
-        backgroundImage:
-          `radial-gradient(circle at 15% 10%, rgba(16, 163, 127, 0.18), transparent 52%), ` +
-          `radial-gradient(circle at 85% 15%, rgba(241, 179, 117, 0.24), transparent 55%), ` +
-          `radial-gradient(circle at 70% 85%, rgba(229, 139, 122, 0.2), transparent 60%), ` +
-          `linear-gradient(160deg, ${colors.background}, ${colors.backgroundAlt})`,
-      },
-    },
-    cardContent
   );
 }

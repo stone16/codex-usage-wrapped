@@ -52,25 +52,32 @@ export const typography = {
 export const spacing = [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64];
 
 export const layout = {
+  // Card-only output (no outer canvas)
   canvas: {
-    // Match the HTML viewport size for comparison
+    width: 900,
+    height: 920,  // Full content height with footer padding
+  },
+  // For HTML comparison (includes outer padding)
+  htmlViewport: {
     width: 1200,
-    height: 944, // 896 (content) + 24*2 (padding)
+    height: 968,
   },
   card: {
     width: 900,
-    height: 896,
+    height: 920,
   },
   padding: {
     horizontal: 20,
     top: 20,
-    bottom: 20,
+    bottom: 24,  // Extra padding below footer
   },
   radius: {
     md: 10,
     lg: 12,
     card: 16,
   },
+  // 2x scale for high-resolution output
+  scale: 2,
   shadow: "0 10px 26px rgba(35, 31, 25, 0.09)",
   cardShadow: "0 20px 60px rgba(35, 31, 25, 0.15)",
 };
