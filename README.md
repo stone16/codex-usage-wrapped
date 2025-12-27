@@ -5,7 +5,7 @@ Generate a Spotify Wrapped-style summary of your Codex CLI usage and a shareable
 ## Quick Start
 
 ```bash
-npx codex-wrapped
+npx codex-usage-wrapped
 ```
 
 ## Outputs
@@ -17,7 +17,7 @@ npx codex-wrapped
 Use `--out` to change the output directory and `--image` to override the PNG path:
 
 ```bash
-npx codex-wrapped --out ./my-wrapped --image ./my-wrapped/share.png
+npx codex-usage-wrapped --out ./my-wrapped --image ./my-wrapped/share.png
 ```
 
 ## Configuration
@@ -25,7 +25,7 @@ npx codex-wrapped --out ./my-wrapped --image ./my-wrapped/share.png
 By default, Codex Wrapped reads `codex-wrapped.config.yaml`. Override the path with:
 
 ```bash
-npx codex-wrapped --config ./custom-config.yaml
+npx codex-usage-wrapped --config ./custom-config.yaml
 ```
 
 See `codex-wrapped.config.yaml` for available options.
