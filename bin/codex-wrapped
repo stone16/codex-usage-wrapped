@@ -11,10 +11,10 @@ const packageRoot = path.resolve(__dirname, "..");
 
 function printHelp() {
   console.log(`
-codex-wrapped - Generate a Spotify Wrapped-style summary of your Codex CLI usage
+codex-usage-wrapped - Generate a Spotify Wrapped-style summary of your Codex CLI usage
 
 USAGE:
-  codex-wrapped [options]
+  codex-usage-wrapped [options]
 
 OPTIONS:
   --out <dir>      Output directory for the dashboard (default: ./codex-wrapped)
@@ -23,9 +23,9 @@ OPTIONS:
   --help, -h       Show this help message
 
 EXAMPLES:
-  npx codex-wrapped
-  npx codex-wrapped --out ./my-wrapped
-  npx codex-wrapped --config ./custom-config.yaml
+  npx codex-usage-wrapped
+  npx codex-usage-wrapped --out ./my-wrapped
+  npx codex-usage-wrapped --config ./custom-config.yaml
 `);
 }
 
