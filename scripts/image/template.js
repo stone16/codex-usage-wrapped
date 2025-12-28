@@ -789,20 +789,7 @@ export function buildWrappedTemplate(data) {
     ),
   ], { padding: 12 });
 
-  // Footer with bottom padding
-  const footer = h(
-    "div",
-    { 
-      style: { 
-        textAlign: "center", 
-        fontSize: 9, 
-        color: colors.text.faint, 
-        marginTop: 2,
-        paddingBottom: layout.padding.bottom,
-      } 
-    },
-    "@stometaverse"
-  );
+  // Footer removed (previously included a handle / branding)
 
   // Card-only output (no outer canvas wrapper)
   return h(
@@ -837,7 +824,6 @@ export function buildWrappedTemplate(data) {
       topModelsPanel,
       cachePanel
     ),
-    totalsPanel,
-    footer
+    totalsPanel
   );
 }
